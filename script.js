@@ -17,13 +17,13 @@ async function showDesserts() {
         li.innerHTML =  `
             <figure class="desserts__picture">
                 <img class="desserts__img" src="${dessert.image.mobile}" alt="${dessert.category}" />
-                <div data-dessert="${dessert.category}" class="btnCart only">
+                <button tabindex="0" aria-label="Add Waffle to Cart" data-dessert="${dessert.category}" class="btnCart only">
                     <img src="./assets/images/icon-add-to-cart.svg" alt="Add Cart">
                     <p class="desserts__add-cart">Add to Cart</p>
-                </div>
+                </button>
             </figure>
             <section class="desserts__information">
-                <h3 class="desserts__category">${dessert.category}</h3>
+                <p class="desserts__category">${dessert.category}</p>
                 <h2 class="desserts__name">${dessert.name}</h2>
                 <h2 class="desserts__price">$${dessert.price}</h2>
             </section>
