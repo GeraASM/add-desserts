@@ -9,6 +9,29 @@ async function start() {
     }
 }
 
+const dessertsContent = document.getElementById("desserts");
+async function showDesserts() {
+    allDesserts.forEach(dessert => {
+        const li = document.createElement("li");
+        li.className = "desserts__item";
+        li.innerHTML =  `
+            <figure class="desserts__picture">
+                <img class="desserts__img" src="${dessert.image.mobile}" alt="${dessert.category}" />
+                <div data-dessert="${dessert.category}" class="btnCart only">
+                    <img src="./assets/images/icon-add-to-cart.svg" alt="Add Cart">
+                    <p class="desserts__add-cart">Add to Cart</p>
+                </div>
+            </figure>
+            <section class="desserts__information">
+                <h3 class="desserts__category">${dessert.category}</h3>
+                <h2 class="desserts__name">${dessert.name}</h2>
+                <h2 class="desserts__price">$${dessert.price}</h2>
+            </section>
+        `;
+        dessertsContent.append(li);
+    })
+}
+
 async function addDesserts() {
     const btns = document.querySelectorAll(".btnCart");
     btns.forEach(btn => {
@@ -216,5 +239,6 @@ listShow.addEventListener("click", (e) => {
 
 window.addEventListener("DOMContentLoaded", async () => {
     await start();
+    await showDesserts();
     await addDesserts();
 })

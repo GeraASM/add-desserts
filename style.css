@@ -14,12 +14,50 @@
     --color-green: #1EA575;
 
 }
-.btns {
-    display: flex;
-    gap: 50px;
+body {
+    background-color: var(--color-rose-50);
+    height: 100vh;
+    font-family: "Red Hat Display", sans-serif;
 }
 
+.container {
+    padding: 24px;
+}
+
+.desserts__title {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 1.2;
+    color: var(--color-rose-900);
+    margin-bottom: 32px;
+}
+
+.desserts-content {
+    display: grid;
+    gap: 24px;
+    list-style-type: none;
+}
+
+.desserts__picture {
+    position: relative;
+}
+
+.desserts__img {
+    position: relative;
+    display: block;
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
 .btnCart {
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 50%);
     padding: 12px;
     border-radius: 50px;
     width: 160px;
@@ -39,6 +77,12 @@
     background-color: var(--color-red);
     justify-content: space-between;
     cursor: auto;
+}
+
+.desserts__add-cart {
+    color: var(--color-rose-900);
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .count {
@@ -62,11 +106,87 @@
     fill: var(--color-red);
 }
 
+
+.desserts__information {
+    margin-top: 38px;
+}
+
+.desserts__category {
+    font-size: 14px;
+    color: var(--color-rose-500);
+    font-weight: 400;
+}
+
+.desserts__name {
+    color: var(--color-rose-900);
+    font-weight: 600;
+    font-size: 16px;
+    margin: 4px 0;
+}
+
+.desserts__price {
+    color: var(--color-red);
+    font-size: 16px;
+    font-weight: 600;
+
+}
+
 .cart {
-    width: 384px;
+    margin-top: 32px;
     padding: 24px;
     border-radius: 12px;
     background-color: #fff;
+    margin-inline: auto;
+    max-width: 688px;
+}
+
+.desssert__part1 {
+    max-width: 375px;
+    margin-inline: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .desserts-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .desssert__part1 {
+        max-width: 688px;
+    }
+    
+    .cart {
+        max-width: 688px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .desssert__part1 {
+        max-width: 800px;
+    }
+
+    .cart {
+        margin-inline: auto;
+        max-width: 800px;
+        min-width: 360px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+
+    .container {
+        margin-inline: auto;
+        display: flex;
+        align-items: flex-start;
+        gap: 32px;
+        max-width: 1300px;
+    }
+
+    .cart {
+        margin-top: 0;
+        margin-inline: auto;
+    }
+    
 }
 
 .cart__count {
