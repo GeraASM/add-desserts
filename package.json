@@ -1,0 +1,24 @@
+{
+  "name": "list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeraASM/add-desserts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GeraASM/add-desserts/issues"
+  },
+  "homepage": "https://github.com/GeraASM/add-desserts#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

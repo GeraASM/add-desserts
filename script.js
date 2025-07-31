@@ -150,7 +150,7 @@ function resetBtn(nameCategory) {
             b.classList.remove("decrement-increment-btn");
             b.innerHTML = `
                 <img src="./assets/images/icon-add-to-cart.svg" alt="Add Cart">
-                <p>Add to Cart</p>
+                <p class="desserts__add-cart">Add to Cart</p>
             `
         }
     })
@@ -265,6 +265,32 @@ async function showTicket() {
     await addDessertsInTicket();
     const btnResetAll = document.getElementById("reset");
     btnResetAll.addEventListener("click", resetAllInformation);
+    await sendDessertServer();
+}
+
+async function sendDessertServer() {
+    try {
+        await fetch("/save-desserts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ desserts: dessertsChose }), 
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error("Error to save desserts");
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Answer server:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
+    } catch (err) {
+        console.log("Error when try to send desserts to server")
+    }
 }
 
 async function addDessertsInTicket() {
@@ -289,6 +315,8 @@ async function addDessertsInTicket() {
     })
     ticketTotal.textContent = `$${(total).toFixed(2)}`
 }
+
+// SEND DESSERTS TO SERVER
 btnConfirm.addEventListener("click", showTicket);
 
 function resetAllBtns() {
@@ -300,7 +328,7 @@ function resetAllBtns() {
             b.classList.remove("decrement-increment-btn");
             b.innerHTML = `
                 <img src="./assets/images/icon-add-to-cart.svg" alt="Add Cart">
-                <p>Add to Cart</p>
+                <p class="desserts__add-cart">Add to Cart</p>
             `
     })
 }

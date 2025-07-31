@@ -1,2 +1,4 @@
 /product-list-with-cart-main
 product-list-with-cart-main.zip
+./node_modules
+node_modules
