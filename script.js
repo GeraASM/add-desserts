@@ -57,6 +57,8 @@ const addDessert = (e) => {
     } 
     if (btnSelect.classList.contains("only")) {
         btnSelect.classList.remove("only");
+        const picture = btnSelect.closest(".desserts__picture");
+        picture.classList.add("desserts__picture--add");
         if (categoryName) appendDessert(categoryName);
         btnSelect.classList.add("decrement-increment-btn");
         btnSelect.innerHTML = `
@@ -142,6 +144,8 @@ function resetBtn(nameCategory) {
     const btns = document.querySelectorAll(".btnCart");
     btns.forEach(b => {
         if (b.dataset.dessert === nameCategory) {
+             const picture = b.closest(".desserts__picture");
+            picture.classList.remove("desserts__picture--add");
             b.classList.add("only");
             b.classList.remove("decrement-increment-btn");
             b.innerHTML = `
@@ -236,6 +240,87 @@ listShow.addEventListener("click", (e) => {
         deleteItem(e);
     }
 })
+
+const show = document.getElementById("show");
+const btnConfirm = document.getElementById("confirm");
+async function showTicket() {
+    const section = document.createElement("section");
+    section.className = 'ticket';
+    
+    section.innerHTML = `
+            <img class="ticket__img-confirm" src="./assets/images/icon-order-confirmed.svg" alt="Confirm">
+            <h2 class="ticket__title">Order Confirm</h2>
+            <p class="ticket__hope">We hope you enjoy your food!</p>
+            <section class="ticket-content">
+                <ul class="ticket__list">
+                </ul>
+                <section class="ticket__total">
+                    <p class="ticket__order cart__text-total">Order Total</p>
+                    <h2 class="ticket__all-total cart__allTotal">$146.50</h2>
+                </section>
+            </section>
+            <button id="reset" class="cart__confirm-order ticket__btn-new" type="button">Start New Order</button>
+    `
+    show.append(section);
+    await addDessertsInTicket();
+    const btnResetAll = document.getElementById("reset");
+    btnResetAll.addEventListener("click", resetAllInformation);
+}
+
+async function addDessertsInTicket() {
+    const ticketList = document.querySelector(".ticket__list");
+    const ticketTotal = document.querySelector(".ticket__all-total");
+    let total = 0;
+    dessertsChose.forEach(dessert => {
+        total += dessert.number * dessert.price;
+        const li = document.createElement("li");
+        li.className = "ticket__dessert";
+        li.innerHTML = `
+                <img src="${dessert.image.thumbnail}" alt="${dessert.category}" class="ticket__img">
+                <div class="ticket__information">
+                    <h4 class="ticket__name cart__name">${dessert.category}</h4>
+                    <p class="ticket__count cart__number">${dessert.number}x</p>
+                    <p class="ticket__base cart__base">@ $${dessert.price}</p>
+                </div>
+                <h3 class="ticket__price cart__total">$${(dessert.number * dessert.price).toFixed(2)}</h3>
+        
+        `
+        ticketList.append(li);
+    })
+    ticketTotal.textContent = `$${(total).toFixed(2)}`
+}
+btnConfirm.addEventListener("click", showTicket);
+
+function resetAllBtns() {
+    const btns = document.querySelectorAll(".btnCart");
+    btns.forEach(b => {
+            const picture = b.closest(".desserts__picture");
+            picture.classList.remove("desserts__picture--add");
+            b.classList.add("only");
+            b.classList.remove("decrement-increment-btn");
+            b.innerHTML = `
+                <img src="./assets/images/icon-add-to-cart.svg" alt="Add Cart">
+                <p>Add to Cart</p>
+            `
+    })
+}
+
+
+function resetAllInformation() {
+     const ticketList = document.querySelector(".ticket__list");
+     const ticketAllTotal = document.querySelector(".ticket__all-total");
+     resetAllBtns();
+     dessertsChose = [];
+     updateList();
+    totalShow.textContent = '$0.00';
+    numberDessertsInCart.textContent = 0;
+    ticketList.innerHTML = '';
+    ticketAllTotal.textContent = '$0.00';
+    const ticket = document.querySelector(".ticket");
+    show.removeChild(ticket);
+}
+
+
 
 window.addEventListener("DOMContentLoaded", async () => {
     await start();

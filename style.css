@@ -20,6 +20,10 @@ body {
     font-family: "Red Hat Display", sans-serif;
 }
 
+main {
+    position: relative;
+}
+
 .container {
     padding: 24px;
 }
@@ -40,6 +44,14 @@ body {
 
 .desserts__picture {
     position: relative;
+    border-radius: 8px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+}
+
+.desserts__picture--add {
+    border-color: var(--color-red);
 }
 
 .desserts__img {
@@ -71,6 +83,10 @@ body {
 
 .btnCart:hover {
     border-color: var(--color-red);
+}
+
+.btnCart:hover .desserts__add-cart {
+    color: var(--color-red);
 }
 
 .decrement-increment-btn {
@@ -319,4 +335,103 @@ body {
 
 .cart__confirm-order:hover {
     background-color: #7e270d;
+}
+
+
+.ticket {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 0 0 100vmax #00000081;
+    padding: 40px 24px 24px;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .ticket {
+        padding: 40px;
+        border-radius: 20px;
+        top: 0;
+        bottom: auto;
+        max-width: 688px;
+        left: 50%;
+        transform: translate(-50%, 20%);
+    }
+
+}
+
+.ticket__title {
+    margin: 24px 0 8px;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--color-rose-900);
+}
+
+.ticket__hope {
+    color: var(--color-rose-500);
+}
+
+.ticket-content {
+    margin: 32px 0;
+    border-radius: 8px;
+    background-color: var(--color-rose-50);
+    padding: 24px;
+}
+
+.ticket__list {
+    display: grid;
+    gap: 16px;
+}
+
+.ticket__dessert {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-rose-100);
+}
+
+.ticket__dessert:last-of-type {
+    padding-bottom: 24px;
+}
+
+.ticket__img {
+    width: 48px; height: 48px;
+    border-radius: 4px;
+}
+
+.ticket__count {
+    display: inline-block;
+}
+
+.ticket__base {
+    display: inline-block;
+    margin-left: 12px;
+}
+
+.ticket__price {
+    margin-left: auto;
+}
+
+.ticket__name {
+    margin-bottom: -1px;
+}
+
+.ticket__total {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-rose-900);
+}
+
+.ticket__all-total {
+    font-weight: 900;
+}
+
+.ticket__btn-new {
+    width: 100%;
 }

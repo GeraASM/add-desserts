@@ -11,7 +11,7 @@
     <title>List Desserts</title>
 </head>
 <body>
-    <main>
+    <main id="show">
         <section class="container">
 
             <section class="desssert__part1">
@@ -83,10 +83,35 @@
                         <img src="./assets/images/icon-carbon-neutral.svg" alt="Carbon" class="cart__Carbon">
                         <small class="cart__text">This is a <strong>carbon-neutral</strong> delivery</small>
                     </div>
-                    <button class="cart__confirm-order" type="button">Confirm Order</button>
+                    <button id="confirm" class="cart__confirm-order" type="button">Confirm Order</button>
                 </section>
             </section>
         </section>
+
+        <!-- <section class="ticket">
+            <img class="ticket__img-confirm" src="./assets/images/icon-order-confirmed.svg" alt="Confirm">
+            <h2 class="ticket__title">Order Confirm</h2>
+            <p class="ticket__hope">We hope you enjoy your food!</p>
+            <section class="ticket-content">
+                <ul class="ticket__list">
+                    <li class="ticket__dessert">
+                        <img src="./assets/images/image-waffle-thumbnail.jpg" alt="Waffle" class="ticket__img">
+                        <div class="ticket__information">
+                            <h4 class="ticket__name cart__name">Waffle</h4>
+                            <p class="ticket__count cart__number">1x</p>
+                            <p class="ticket__base cart__base">@ $5.50</p>
+                        </div>
+                        <h3 class="ticket__price cart__total">$5.50</h3>
+                    </li>
+
+                </ul>
+                <section class="ticket__total">
+                    <p class="ticket__order cart__text-total">Order Total</p>
+                    <h2 class="ticket__all-total cart__allTotal">$146.50</h2>
+                </section>
+            </section>
+            <button id="reset" class="cart__confirm-order ticket__btn-new" type="button">Start New Order</button>
+        </section> -->
     </main>
     <script src="./script.js"></script>
 </body>
