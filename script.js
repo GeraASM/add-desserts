@@ -30,6 +30,15 @@ async function showDesserts() {
         `;
         dessertsContent.append(li);
     })
+    window.addEventListener("resize", updateImages);
+}
+async function updateImages() {
+    const imagesShow = document.querySelectorAll(".desserts__img");
+    imagesShow.forEach((img, index) => {
+        if (window.innerWidth > 768) img.src = allDesserts[index].image.tablet;
+        if (window.innerWidth > 1024) img.src = allDesserts[index].image.desktop;
+        if (window.innerWidth < 768) img.src = allDesserts[index].image.mobile;
+    })
 }
 
 async function addDesserts() {
@@ -353,5 +362,6 @@ function resetAllInformation() {
 window.addEventListener("DOMContentLoaded", async () => {
     await start();
     await showDesserts();
+    await updateImages();
     await addDesserts();
 })
